@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro | KJAM ESSENZA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="foro.css">
+</head>
+<body>
+
+    <header>
+        <a href="perfumes.html" class="logo">KJAM <span>ESSENZA</span></a>
+        <a href="perfumes.html" class="btn-volver">← Volver al Inicio</a>
+    </header>
+    <main class="foro-layout">
+        <!-- Columna 1: Lista de Comentarios -->
+        <div class="columna-comentarios">
+            <div class="foro-header">
+                <h1>Comunidad Essenza</h1>
+                <p>Comparte tu experiencia olfativa y lee lo que otros dicen.</p>
+            </div>
+            <div id="lista-comentarios">
+                <p style="text-align: center; color: var(--text-muted);">Cargando foro...</p>
+            </div>
+        </div>
+
+        <!-- Columna 2: Formulario -->
+        <div class="columna-formulario">
+            <div class="comentario-form">
+                <h3>Deja tu comentario</h3>
+                
+                <!-- Indicador de respuesta -->
+                <div id="indicador-respuesta" style="display: none; padding: 10px; background: #1a1a1a; margin-bottom: 15px; border-left: 3px solid var(--accent-gold); font-size: 0.85rem;">
+                    Respondiendo a <strong id="nombre-respuesta"></strong>
+                    <button type="button" id="btn-cancelar" style="float: right; background: none; border: none; color: #aaa; cursor: pointer;">✕ Cancelar</button>
+                </div>
+
+                <form id="form-foro">
+                    <input type="text" id="nombreInput" placeholder="Tu nombre" required>
+                    <textarea id="mensajeInput" rows="4" placeholder="Escribe tu opinión o respuesta..." required></textarea>
+                    <button type="submit" class="btn" id="btnPublicar">Publicar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="main.js"></script>
+</body>
+</html>

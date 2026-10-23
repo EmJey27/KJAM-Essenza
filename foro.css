@@ -1,0 +1,236 @@
+:root {
+            --bg-color: #080808;
+            --section-bg: #121212;
+            --text-main: #f4f4f4;
+            --text-muted: #aaaaaa;
+            --accent-gold: #d4af37;
+            --accent-hover: #f1c94f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 2rem 5%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: #030303;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--accent-gold); font-weight: bold; }
+
+        .btn-volver {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .btn-volver:hover { color: var(--accent-gold); }
+
+        .foro-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .foro-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .foro-header h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--accent-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        /* Formulario */
+        .comentario-form {
+            background-color: var(--section-bg);
+            padding: 2rem;
+            border: 1px solid #222;
+            border-radius: 4px;
+            margin-bottom: 4rem;
+        }
+
+        .comentario-form input,
+        .comentario-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            color: var(--text-main);
+            font-family: inherit;
+        }
+
+        .comentario-form input:focus,
+        .comentario-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            background-color: var(--accent-gold);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .btn:hover { background-color: var(--accent-hover); }
+
+        /* Lista de Comentarios */
+        .comentario-card {
+            background-color: var(--section-bg);
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent-gold);
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .comentario-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            align-items: center;
+        }
+
+        .autor {
+            font-weight: bold;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+        }
+
+        .fecha {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+/* Layout a dos columnas */
+.foro-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px; /* Columna izquierda flexible, derecha fija */
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 5%;
+    align-items: start;
+}
+
+.foro-header {
+    text-align: left;
+    margin-bottom: 2.5rem;
+}
+
+.foro-header h1 {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--accent-gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+/* Formulario fijo a la derecha */
+.comentario-form {
+    background-color: var(--section-bg);
+    padding: 2rem;
+    border: 1px solid #222;
+    border-radius: 4px;
+}
+
+/* Botón de responder */
+.btn-responder {
+    background: none;
+    border: none;
+    color: var(--accent-gold);
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    transition: color 0.3s;
+}
+
+.btn-responder:hover {
+    color: var(--text-main);
+}
+
+/* Estilo para los comentarios anidados (respuestas) */
+.comentario-respuesta {
+    margin-left: 3rem;
+    border-left: 2px solid #333;
+    background-color: #0d0d0d;
+    margin-top: -1rem; /* Para juntarlo un poco con el padre */
+}
+
+@media (max-width: 900px) {
+    .foro-layout {
+        grid-template-columns: 1fr; /* Una sola columna en celulares */
+        gap: 2rem;
+    }
+    .comentario-form {
+        position: static;
+        order: -1; /* Pone el formulario arriba en celulares */
+    }
+    .comentario-respuesta {
+        margin-left: 1.5rem;
+    }
+}
+
+/* Botón para desplegar respuestas */
+.btn-ver-respuestas {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-left: 3rem; /* Lo alinea con las respuestas anidadas */
+    margin-bottom: 1.5rem;
+    margin-top: -0.5rem;
+    transition: color 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-ver-respuestas:hover {
+    color: var(--accent-gold);
+}
+
+.columna-formulario {
+    position: sticky;
+    top: 15vh; /* Ajusta la distancia desde el techo para que se vea centrado en pantalla */
+    align-self: start; /* CRUCIAL: Evita que la columna se estire, permitiendo el efecto fijo */
+}
