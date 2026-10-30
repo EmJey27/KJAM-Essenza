@@ -19,7 +19,17 @@
             <div class="foro-header">
                 <h1>Comunidad Essenza</h1>
                 <p>Comparte tu experiencia olfativa y lee lo que otros dicen.</p>
+                <button type="button" class="btn" onclick="exportarForo()" style="background-color: transparent; border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 0.5rem 1rem; margin-bottom: 1rem; width: auto; font-size: 0.85rem; margin-top: 0.5rem; cursor: pointer;">
+                    ↓ Exportar Comentarios txt
+                </button>
             </div>
+            
+            <!-- NUEVO: Indicador de búsqueda activa -->
+            <div id="filtro-indicador" class="filtro-indicador" style="display: none;">
+                <span>Explorando el tema: <strong id="tag-filtrado"></strong></span>
+                <button type="button" onclick="quitarFiltro()">✕ Ver todos</button>
+            </div>
+
             <div id="lista-comentarios">
                 <p style="text-align: center; color: var(--text-muted);">Cargando foro...</p>
             </div>
@@ -30,7 +40,6 @@
             <div class="comentario-form">
                 <h3>Deja tu comentario</h3>
                 
-                <!-- Indicador de respuesta -->
                 <div id="indicador-respuesta" style="display: none; padding: 10px; background: #1a1a1a; margin-bottom: 15px; border-left: 3px solid var(--accent-gold); font-size: 0.85rem;">
                     Respondiendo a <strong id="nombre-respuesta"></strong>
                     <button type="button" id="btn-cancelar" style="float: right; background: none; border: none; color: #aaa; cursor: pointer;">✕ Cancelar</button>
@@ -39,6 +48,22 @@
                 <form id="form-foro">
                     <input type="text" id="nombreInput" placeholder="Tu nombre" required>
                     <textarea id="mensajeInput" rows="4" placeholder="Escribe tu opinión o respuesta..." required></textarea>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="imagenInput" style="display: block; font-size: 0.85rem; color: var(--accent-gold); margin-bottom: 0.5rem;">Adjuntar imagen (Opcional)</label>
+                        <input type="file" id="imagenInput" accept="image/png, image/jpeg, image/webp" style="width: 100%; border: 1px dashed #333; padding: 0.5rem; background: transparent; cursor: pointer;">
+                    </div>
+                                        
+                    <!-- NUEVO: Sistema de Etiquetas estilo Notion -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <div id="tags-seleccionadas" class="tags-seleccionadas"></div>
+                        <div style="position: relative;">
+                            <input type="text" id="input-etiqueta" placeholder="Añadir etiqueta (ej. #Amaderado)..." autocomplete="off" style="margin-bottom: 0;">
+                            <div id="dropdown-etiquetas" class="dropdown-etiquetas" style="display: none;">
+                                <!-- La ventana flotante se llena con JS -->
+                            </div>
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn" id="btnPublicar">Publicar</button>
                 </form>
             </div>
